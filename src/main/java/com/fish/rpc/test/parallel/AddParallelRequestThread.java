@@ -21,10 +21,11 @@ public class AddParallelRequestThread implements Runnable {
 	public void run() {
 		try {
 			signal.await();
-			long start = System.currentTimeMillis();
 			int result = add.add(taskNumber, taskNumber);
-			System.out.println("task-"+taskNumber+" add result : ["+result+"],耗时"+(System.currentTimeMillis()-start));
-			finish.countDown();
+			if(result!=taskNumber*2){
+				System.err.println(String.format("执行结果错误result=%s,realResult=%s", result,(taskNumber+taskNumber)));
+			}
+ 			finish.countDown();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

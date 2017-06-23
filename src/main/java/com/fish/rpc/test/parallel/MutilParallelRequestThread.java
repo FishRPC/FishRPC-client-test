@@ -21,8 +21,12 @@ public class MutilParallelRequestThread implements Runnable {
 	public void run() {
 		try {
 			signal.await();
-			double result = mutil.multi(taskNumber,taskNumber);
-			//System.out.println("task-"+taskNumber+"add result : ["+result+"]");
+			int result = mutil.multi(taskNumber,taskNumber);
+			if(result!=taskNumber*taskNumber){
+				//throw new RuntimeException();
+				System.err.println(String.format("执行结果错误result=%s,realResult=%s", result,(taskNumber*taskNumber)));
+			}
+			
 			finish.countDown();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
