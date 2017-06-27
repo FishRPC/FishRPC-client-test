@@ -38,7 +38,7 @@ public class TestRPC {
 			
 			IMulti multi = (IMulti)FishRPCExecutorClient.getInstance().getBean(IMulti.class);
 			
-			Thread.sleep(1000);
+			Thread.sleep(10000);
 			System.out.println("start multi...");
 			System.out.println("result:"+multi.multi(1, 1));
 			System.out.println("end multi...");
