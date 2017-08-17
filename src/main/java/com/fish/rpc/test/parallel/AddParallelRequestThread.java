@@ -21,7 +21,7 @@ public class AddParallelRequestThread implements Runnable {
 	public void run() {
 		try {
 			signal.await();
-			int result = add.add(taskNumber, taskNumber);
+			int result = add.add(taskNumber,null,taskNumber);
 			if(result!=taskNumber*2){
 				System.err.println(String.format("执行结果错误result=%s,realResult=%s", result,(taskNumber+taskNumber)));
 			}

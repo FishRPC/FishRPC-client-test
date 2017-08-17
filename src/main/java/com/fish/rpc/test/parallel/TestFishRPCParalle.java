@@ -4,6 +4,7 @@ import java.util.concurrent.CountDownLatch;
 
 import org.apache.commons.lang3.time.StopWatch;
 
+import com.fish.rpc.core.client.FishRPCClientInit;
 import com.fish.rpc.core.client.FishRPCExecutorClient;
 import com.fish.rpc.test.add.IAdd;
 import com.fish.rpc.test.multi.IMulti;
@@ -55,6 +56,7 @@ public class TestFishRPCParalle {
     }
     
     public static void main(String[] args) throws Exception {
+    	FishRPCClientInit.getInstance().init(null);
         //并行度1000
         int parallel = 500; 
         for (int i = 0; i < 100 ; i++) {
