@@ -58,14 +58,14 @@ public class TestFishRPCParalle {
     public static void main(String[] args) throws Exception {
     	FishRPCClientInit.getInstance().init(null);
         //并行度1000
-        int parallel = 500; 
-        for (int i = 0; i < 100 ; i++) {
+        int parallel = 1000; 
+        for (int i = 0; i < 10 ; i++) {
     		IAdd add = (IAdd)FishRPCExecutorClient.getInstance().getBean(IAdd.class);
     		parallelAddCalcTask(add,parallel);
-    		IMulti multi = (IMulti)FishRPCExecutorClient.getInstance().getBean(IMulti.class);
-    		parallelMultiCalcTask(multi,parallel);
+    		/*IMulti multi = (IMulti)FishRPCExecutorClient.getInstance().getBean(IMulti.class);
+    		parallelMultiCalcTask(multi,parallel);*/
             System.out.printf("FishRPC Server 消息协议序列化第[%d]轮并发验证结束!\n\n", i);
-            Thread.sleep(5000);
+            Thread.sleep(6000);
         } 
     }
 
