@@ -10,7 +10,7 @@ public class AddParallelRequestThread implements Runnable {
 	private CountDownLatch finish;
 	private int taskNumber = 0;
 	private IAdd add;
-	
+
 	public AddParallelRequestThread(IAdd add,CountDownLatch signal,CountDownLatch finish,int taskNumber){
 		this.signal = signal;
 		this.finish = finish;
@@ -21,7 +21,7 @@ public class AddParallelRequestThread implements Runnable {
 	public void run() {
 		try {
 			signal.await();
-			int result = add.add(taskNumber,null,taskNumber);
+			int result = add.add(taskNumber,taskNumber);
 			if(result!=taskNumber*2){
 				System.err.println(String.format("执行结果错误result=%s,realResult=%s", result,(taskNumber+taskNumber)));
 			}
